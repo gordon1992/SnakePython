@@ -1,1 +1,4 @@
-Simple snake clone in Python. Was a first year project.
+Simple Snake game in Python. This was a first year project.
+Requires: Python 2.6.x or above. Compatible with Python 3.x
+	  Tkinter version at least as new as Python build.
+Usage:	  Open the src directory. Enter comment 'python mainMenu.pyw'
