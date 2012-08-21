@@ -31,8 +31,10 @@ except ImportError:
 from random import randrange
 
 
-xMin = yMin = 10
-xMax = yMax = 490
+xMin = 10
+yMin = 10
+xMax = 490
+yMax = 490
 
 
 class snake():
@@ -42,10 +44,15 @@ class snake():
         self.colour = "red"
         self.speed = self.diameter
         self.length = 2
-        self.moveUp = self.moveDown = self.moveLeft = self.moveRight = self.stopTooQuickKeys = False
+        self.moveUp = False
+        self.moveDown = False
+        self.moveLeft = False
+        self.moveRight = False
         self.score = 0
-        self.headXPos = self.headYPos = self.tailYPos = 250
+        self.headXPos = 250
+        self.headYPos = 250
         self.tailXPos = 230
+        self.tailYPos = 250
         self.stopTooQuickKeys = False
 
 
@@ -64,24 +71,35 @@ def callback(event):
     # Make snake move appropriately based on which key was pressed.
     # Only allow moving left if snake isn't moving right, only allow moving up
     # if snake isn't moving down etc...
-    player.moveLeft = player.moveRight = player.moveUp = player.moveDown = False
     if (key == "Left" or key == "a") and not player.moveRight \
                             and not player.stopTooQuickKeys:
         player.moveLeft = True
+        player.moveRight = False
+        player.moveUp = False
+        player.moveDown = False
         player.stopTooQuickKeys = True
 
     if (key == "Right" or key == "d") and not player.moveLeft \
                             and not player.stopTooQuickKeys:
+        player.moveLeft = False
         player.moveRight = True
+        player.moveUp = False
+        player.moveDown = False
         player.stopTooQuickKeys = True
 
     if (key == "Up" or key == "w") and not player.moveDown \
                             and not player.stopTooQuickKeys:
+        player.moveLeft = False
+        player.moveRight = False
         player.moveUp = True
+        player.moveDown = False
         player.stopTooQuickKeys = True
 
     if (key == "Down" or key == "s") and not player.moveUp \
                             and not player.stopTooQuickKeys:
+        player.moveLeft = False
+        player.moveRight = False
+        player.moveUp = False
         player.moveDown = True
         player.stopTooQuickKeys = True
 
